@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>❤️ TE AMO ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(45deg, #ff0000, #ff00ff, #00ffff, #00ff00, #ffff00);
+      background-size: 800% 800%;
+      animation: fondoLocura 3s ease infinite;
+      font-family: 'Arial', sans-serif;
+    }
+
+    @keyframes fondoLocura {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .mensaje {
+      position: absolute;
+      color: #fff;
+      font-size: 40px;
+      animation: mover 2s linear infinite;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    @keyframes mover {
+      0% {
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        top: -20%;
+        left: calc(100% * var(--random));
+        transform: translate(-50%, -50%) rotate(720deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  function crearMensaje() {
+    const mensaje = document.createElement("div");
+    mensaje.classList.add("mensaje");
+    mensaje.style.setProperty('--random', Math.random());
+    mensaje.innerText = "❤️ ¡TE AMO! ❤️";
+    mensaje.style.fontSize = (Math.random() * 50 + 20) + "px";
+    mensaje.style.color = `hsl(${Math.random()*360}, 100%, 70%)`;
+    document.body.appendChild(mensaje);
+
+    setTimeout(() => {
+      mensaje.remove();
+    }, 2000);
+  }
+
+  setInterval(crearMensaje, 100);
+</script>
+
+</body>
+</html>
